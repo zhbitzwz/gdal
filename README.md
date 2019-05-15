@@ -21,4 +21,4 @@ Run docker container with
 and do whatever you like or add ENTRYPOINTS ans scripts.
 
 ## Credits
-Credits to [Geographica](https://github.com/GeographicaGS), [Open Source Geospatial Foundation](https://github.com/OSGeo) and [javimarlop](https://github.com/javimarlop).
+Credits to [Geographica](https://github.com/GeographicaGS), [Open Source Geospatial Foundation](https://github.com/OSGeo), [OpenJPEG](https://github.com/uclouvain/openjpeg) and [javimarlop](https://github.com/javimarlop).

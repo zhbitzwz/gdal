@@ -19,3 +19,6 @@ Run docker container with
 ` docker run -it --rm gdal:3.0.0`
 
 and do whatever you like or add ENTRYPOINTS ans scripts.
+
+## Credits
+Credits to [Geographica](https://github.com/GeographicaGS), [Open Source Geospatial Foundation](https://github.com/OSGeo) and [javimarlop](https://github.com/javimarlop).

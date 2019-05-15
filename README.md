@@ -8,7 +8,7 @@ Under Linux make
 
 and run with
 
-`./docker-run.sh`
+`./docker-build.sh`
 
 Grab a coffee and wait for several minutes. Done.
 

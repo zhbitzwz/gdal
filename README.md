@@ -1,4 +1,4 @@
-# Docker with GDAL 3.0.0
+# Docker with GDAL 3, PROJ.4 6 and OpenJPEG 2.3.1
 
 GDAL 3.0.0 with PROJ4 6.0.0 and OpenJPEG 2.3.1 running with (currently) latest Ubuntu 19.04 Disco Dingo.
 

@@ -8,8 +8,8 @@ Docker image with
  
 based on Ubuntu 
 
- - 18.04 Bionic Beaver with Python 3.6
- - 19.04 Disco Dingo with Python 3.7 
+ - 18.04 Bionic Beaver with Python 3.6 and G++-7
+ - 19.04 Disco Dingo with Python 3.7 and G++-8 
 
 ## Install
 Execute the following statement on a linux based computer 

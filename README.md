@@ -1,22 +1,41 @@
 # Docker with GDAL 3 and OpenJPEG
 
-GDAL 3.0.0 with PROJ4 6.0.0 and OpenJPEG 2.3.1 running with (currently) latest Ubuntu 19.04 Disco Dingo.
+Docker image with
+
+ - GDAL 3.0.0
+ - PROJ4 6.0.0
+ - OpenJPEG 2.3.1
+ 
+based on Ubuntu 
+
+ - 18.04 Bionic Beaver with Python 3.6
+ - 19.04 Disco Dingo with Python 3.7 
 
 ## Install
-Under Linux make 
+Execute the following statement on a linux based computer 
 
-`chmod u+x $USER`
+`chmod u+x $USER ./docker-build.sh`
 
-and run with
+and run afterwards with
 
 `./docker-build.sh`
 
-Grab a coffee and wait for several minutes. Done.
+Grab a coffee and wait for several minutes. 
+
+Done.
+
+## Issues
+
+I got several warnings with the latest Ubuntu 19.04 Disco Dingo caused by changes in Python 3.7.
 
 ## Usage
 Run docker container with
 
-` docker run -it --rm gdal:3.0.0`
+`docker run -it --rm gdal3:bionic`
+
+or
+
+`docker run -it --rm gdal3:disco`
 
 and do whatever you like or add ENTRYPOINTS ans scripts.
 

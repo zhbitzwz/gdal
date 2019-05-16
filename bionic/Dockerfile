@@ -52,14 +52,20 @@ RUN apt-get update -y && \
     cmake
 
 # Add current GDAL, PROJ and OPENJPEG version from external website
-ADD http://download.osgeo.org/gdal/${GDAL_VERSION}/gdal-${GDAL_VERSION}.tar.gz $ROOTDIR/src/
-ADD https://github.com/uclouvain/openjpeg/archive/v${OPENJPEG_VERSION}.tar.gz $ROOTDIR/src/openjpeg-${OPENJPEG_VERSION}.tar.gz
-ADD http://download.osgeo.org/proj/proj-${PROJ_VERSION}.tar.gz $ROOTDIR/src/proj-${PROJ_VERSION}.tar.gz
+ADD http://download.osgeo.org/gdal/${GDAL_VERSION}/gdal-${GDAL_VERSION}.tar.gz \ 
+    $ROOTDIR/src/gdal-${GDAL_VERSION}.tar.gz
+ADD https://github.com/uclouvain/openjpeg/archive/v${OPENJPEG_VERSION}.tar.gz \
+    $ROOTDIR/src/openjpeg-${OPENJPEG_VERSION}.tar.gz
+ADD http://download.osgeo.org/proj/proj-${PROJ_VERSION}.tar.gz \
+    $ROOTDIR/src/proj-${PROJ_VERSION}.tar.gz
 
 # Add current GDAL, PROJ and OPENJPEG version from local disk
-# COPY proj-${PROJ_VERSION}.tar.gz $ROOTDIR/src/proj-${PROJ_VERSION}.tar.gz
-# COPY openjpeg-${OPENJPEG_VERSION}.tar.gz $ROOTDIR/src/openjpeg-${OPENJPEG_VERSION}.tar.gz
-# COPY gdal-${GDAL_VERSION}.tar.gz $ROOTDIR/src/gdal-${GDAL_VERSION}.tar.gz
+# COPY proj-${PROJ_VERSION}.tar.gz \
+#      $ROOTDIR/src/proj-${PROJ_VERSION}.tar.gz
+# COPY openjpeg-${OPENJPEG_VERSION}.tar.gz \
+#      $ROOTDIR/src/openjpeg-${OPENJPEG_VERSION}.tar.gz
+# COPY gdal-${GDAL_VERSION}.tar.gz \
+#      $ROOTDIR/src/gdal-${GDAL_VERSION}.tar.gz
 
 # Compile and install Proj4 v6
 RUN cd src && \

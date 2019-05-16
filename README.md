@@ -14,7 +14,7 @@ based on Ubuntu
 ## Install
 Execute the following statement on a linux based computer 
 
-`chmod u+x $USER ./docker-build.sh`
+`chmod u+x ./docker-build.sh`
 
 and run afterwards with
 

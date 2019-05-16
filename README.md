@@ -26,7 +26,7 @@ Done.
 
 ## Issues
 
-I got several warnings with the latest Ubuntu 19.04 Disco Dingo caused by changes in Python 3.7.
+I got several warnings with the latest Ubuntu 19.04 Disco Dingo caused by changes in Python 3.7 during the compilation process.
 
 ## Usage
 Run docker container with

@@ -20,7 +20,7 @@ and run afterwards with
 
 `./docker-build.sh`
 
-Grab a coffee and wait for several minutes. 
+Grab a coffee and wait for several minutes (probably half an hour or up to an hour - which can vary depending on your available hardware). 
 
 Done.
 

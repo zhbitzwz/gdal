@@ -43,10 +43,12 @@ RUN apt-get update -y && apt-get install -y \
     g++ \
     cmake
 
-# Add current GDAL, PROJ and OPENJPEG version
+# Add current GDAL, PROJ and OPENJPEG version from external website
 ADD http://download.osgeo.org/gdal/${GDAL_VERSION}/gdal-${GDAL_VERSION}.tar.gz $ROOTDIR/src/
 ADD https://github.com/uclouvain/openjpeg/archive/v${OPENJPEG_VERSION}.tar.gz $ROOTDIR/src/openjpeg-${OPENJPEG_VERSION}.tar.gz
 ADD http://download.osgeo.org/proj/proj-${PROJ_VERSION}.tar.gz $ROOTDIR/src/proj-${PROJ_VERSION}.tar.gz
+
+# Add current GDAL, PROJ and OPENJPEG version from local disk
 # COPY proj-${PROJ_VERSION}.tar.gz $ROOTDIR/src/proj-${PROJ_VERSION}.tar.gz
 # COPY openjpeg-${OPENJPEG_VERSION}.tar.gz $ROOTDIR/src/openjpeg-${OPENJPEG_VERSION}.tar.gz
 # COPY gdal-${GDAL_VERSION}.tar.gz $ROOTDIR/src/gdal-${GDAL_VERSION}.tar.gz
@@ -74,4 +76,4 @@ RUN cd src && tar -xvf gdal-${GDAL_VERSION}.tar.gz && cd gdal-${GDAL_VERSION} \
     && python3 setup.py build \
     && python3 setup.py install \
     && apt-get remove -y --purge build-essential python-dev python3-dev \
-	&& cd $ROOTDIR && rm -Rf src/gdal*
+    && cd $ROOTDIR && rm -Rf src/gdal*

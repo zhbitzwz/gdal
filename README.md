@@ -1,6 +1,6 @@
 # Docker with GDAL3 and OpenJPEG
 
-Docker image with
+Docker image buildfiles with
 
  - GDAL 3.0.0
  - PROJ4 6.1.0
@@ -10,6 +10,8 @@ based on Ubuntu
 
  - 18.04 Bionic Beaver with Python 3.6 and G++-7
  - 19.04 Disco Dingo with Python 3.7 and G++-8 
+ 
+ and legacy GDAL 2.4.1 in folder legacy. 
 
 ## Install
 Execute the following statement on a linux based computer 
@@ -33,9 +35,12 @@ Run docker container with
 
 `docker run -it --rm gdal3:bionic`
 
-or
-
 `docker run -it --rm gdal3:disco`
+
+or for legacy GDAL
+
+`docker run -it --rm gdal2:bionic`
+
 
 and do whatever you like or add ENTRYPOINTS ans scripts.
 

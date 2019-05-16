@@ -1,9 +1,9 @@
-# Docker with GDAL 3 and OpenJPEG
+# Docker with GDAL3 and OpenJPEG
 
 Docker image with
 
  - GDAL 3.0.0
- - PROJ4 6.0.0
+ - PROJ4 6.1.0
  - OpenJPEG 2.3.1
  
 based on Ubuntu 

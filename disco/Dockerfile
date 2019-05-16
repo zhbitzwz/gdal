@@ -1,6 +1,6 @@
 ##
 #
-# This creates an Ubuntu derived base image that installs GDAL 3.
+# This creates an Ubuntu derived base image that installs GDAL3.
 #
 # Ubuntu 19.04 Disco Dingo
 FROM ubuntu:disco
@@ -12,7 +12,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 ARG ROOTDIR=/usr/local/
 ARG GDAL_VERSION=3.0.0
 ARG OPENJPEG_VERSION=2.3.1
-ARG PROJ_VERSION=6.0.0
+ARG PROJ_VERSION=6.1.0
 
 # Load assets
 WORKDIR $ROOTDIR/ 

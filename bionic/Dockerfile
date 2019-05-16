@@ -1,6 +1,6 @@
 ##
 #
-# This creates an Ubuntu derived base image that installs GDAL 3.
+# This creates an Ubuntu derived base image that installs GDAL3.
 #
 # Ubuntu 18.04 Bionic Beaver
 FROM ubuntu:bionic

@@ -14,7 +14,13 @@ ARG GDAL_VERSION=2.4.1
 ARG OPENJPEG_VERSION=2.3.1
 
 # Load assets
-WORKDIR $ROOTDIR/ 
+WORKDIR $ROOTDIR/
+
+# Add current GDAL and OPENJPEG version from external website
+ADD http://download.osgeo.org/gdal/${GDAL_VERSION}/gdal-${GDAL_VERSION}.tar.gz \ 
+    $ROOTDIR/src/gdal-${GDAL_VERSION}.tar.gz
+ADD https://github.com/uclouvain/openjpeg/archive/v${OPENJPEG_VERSION}.tar.gz \
+    $ROOTDIR/src/openjpeg-${OPENJPEG_VERSION}.tar.gz
 
 # Prepare system
 RUN apt-get update && \
@@ -23,46 +29,65 @@ RUN apt-get update && \
     apt-get install -y \
     apt-transport-https \
     ca-certificates \
-    curl
+    curl && \
+    apt-get autoremove -y
 
 # Install basic dependencies
 RUN apt-get update -y && \
     apt-get install -y \
-    software-properties-common \
+    bash-completion \
     build-essential \
+    ccache \
+    cmake \
+    g++ \
+    gpsbabel \
+    libcrypto++-dev \
+    libpcre3-dev \
+    libepsilon-dev \
+    libfreexl-dev \
+    libfyba-dev \
+    libogdi3.2-dev \
+    libpq-dev \
+    libcfitsio-dev \
+    libcurl4-gnutls-dev \
+    libproj-dev \
+    libpng-dev \
+    libpng++-dev \
+    libpng-tools \
+    libxml2-dev \
+    libkml-dev \
+    libjpeg-dev \
+    libgeos-dev \
+    libgif-dev \
+    libnetcdf-dev \
+    libpodofo-dev \
+    libpoppler-dev \
+    libpoppler-private-dev \
+    libmysqlclient-dev \
+    liblzma-dev \
+	libgeos-dev \
+	liblcms2-2 \
+	libzstd1-dev \
+    libspatialite-dev \
+    libhdf4-alt-dev \
+    libhdf5-serial-dev \
+    libexpat-dev \
+    libdap-dev \
+    libwebp-dev \
+    libxerces-c-dev \
+    netcdf-bin \
+    openjdk-8-jdk \
+    poppler-utils \
+    proj-bin \
     python-dev \
     python3-dev \
     python-numpy \
     python3-numpy \
-    libspatialite-dev \
+    software-properties-common \
     sqlite3 \
-    libpq-dev \
-    libcurl4-gnutls-dev \
-    libproj-dev \
-    libxml2-dev \
-    libgeos-dev \
-    libnetcdf-dev \
-    libpoppler-dev \
-    libspatialite-dev \
-    libhdf4-alt-dev \
-    libhdf5-serial-dev \
-    bash-completion \
-    proj-bin \
-    vim \
-    g++ \
-    cmake
-
-# Add current GDAL and OPENJPEG version from external website
-ADD http://download.osgeo.org/gdal/${GDAL_VERSION}/gdal-${GDAL_VERSION}.tar.gz \ 
-    $ROOTDIR/src/gdal-${GDAL_VERSION}.tar.gz
-ADD https://github.com/uclouvain/openjpeg/archive/v${OPENJPEG_VERSION}.tar.gz \
-    $ROOTDIR/src/openjpeg-${OPENJPEG_VERSION}.tar.gz
-
-# Add current GDAL and OPENJPEG version from local disk
-# COPY openjpeg-${OPENJPEG_VERSION}.tar.gz \
-#      $ROOTDIR/src/openjpeg-${OPENJPEG_VERSION}.tar.gz
-# COPY gdal-${GDAL_VERSION}.tar.gz \
-#      $ROOTDIR/src/gdal-${GDAL_VERSION}.tar.gz
+    swig \
+    unixodbc-dev \    
+    vim                             
 
 # Compile and install OpenJPEG
 RUN cd src && \
@@ -81,7 +106,27 @@ RUN cd src && \
 RUN cd src && \
     tar -xvf gdal-${GDAL_VERSION}.tar.gz && \
     cd gdal-${GDAL_VERSION} && \
-    ./configure --with-python --with-spatialite --with-pg --with-curl --with-openjpeg && \
+    ./configure \
+    --with-python \
+    --with-spatialite \
+    --with-pg \
+    --with-curl \
+    --with-openjpeg \
+    --without-libtool \
+    --enable-debug \
+    --with-jpeg12 \
+    --with-python \
+    --with-poppler \
+    --with-podofo \
+    --with-mysql \
+    --with-liblzma \
+    --with-webp \
+    --with-epsilon \
+    --with-static-proj4 \
+    --with-hdf5 \
+    --with-dods-root=/usr \
+    --with-sosi \
+    --with-fgdb=$wd/FileGDB_API-64gcc51&& \
     make -j $(nproc) && \
     make install && \ 
     ldconfig && \

@@ -39,6 +39,7 @@ RUN apt-get update -y && \
     build-essential \
     ccache \
     cmake \
+    doxygen \
     g++ \
     gpsbabel \
     libcrypto++-dev \
@@ -54,20 +55,22 @@ RUN apt-get update -y && \
     libpng-dev \
     libpng++-dev \
     libpng-tools \
+    libpng16-16 \
     libxml2-dev \
     libkml-dev \
     libjpeg-dev \
     libgeos-dev \
     libgif-dev \
     libnetcdf-dev \
-    libpodofo-dev \
     libpoppler-dev \
     libpoppler-private-dev \
     libmysqlclient-dev \
     liblzma-dev \
-	libgeos-dev \
-	liblcms2-2 \
-	libzstd1-dev \
+    libgeos-dev \
+    liblcms2-2 \
+    libgeotiff-dev \
+    libcharls-dev \
+    libzstd1-dev \
     libspatialite-dev \
     libhdf4-alt-dev \
     libhdf5-serial-dev \
@@ -75,6 +78,7 @@ RUN apt-get update -y && \
     libdap-dev \
     libwebp-dev \
     libxerces-c-dev \
+    make \
     netcdf-bin \
     openjdk-8-jdk \
     poppler-utils \
@@ -86,6 +90,7 @@ RUN apt-get update -y && \
     software-properties-common \
     sqlite3 \
     swig \
+    texlive-latex-base \
     unixodbc-dev \    
     vim                             
 
@@ -107,26 +112,30 @@ RUN cd src && \
     tar -xvf gdal-${GDAL_VERSION}.tar.gz && \
     cd gdal-${GDAL_VERSION} && \
     ./configure \
+    --with-cpp14 \
+    --with-png=internal \
+    --with-libtiff=internal \
+    --with-geotiff=internal \
+    --with-jpeg=internal \
+    --with-gif=internal \
     --with-python \
     --with-spatialite \
     --with-pg \
     --with-curl \
     --with-openjpeg \
-    --without-libtool \
     --enable-debug \
-    --with-jpeg12 \
     --with-python \
     --with-poppler \
-    --with-podofo \
     --with-mysql \
     --with-liblzma \
     --with-webp \
     --with-epsilon \
-    --with-static-proj4 \
+    --with-threads=yes \
+    --with-proj \
     --with-hdf5 \
     --with-dods-root=/usr \
     --with-sosi \
-    --with-fgdb=$wd/FileGDB_API-64gcc51&& \
+    --without-libtool && \
     make -j $(nproc) && \
     make install && \ 
     ldconfig && \
